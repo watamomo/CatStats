@@ -1,0 +1,24 @@
+{
+  "development": {
+    "username": "admin",
+    "password": "admin123",
+    "database": "task_manager",
+    "host": "db",
+    "dialect": "postgres",
+    "migrationStoragePath": "src/migrations/sequelize-meta.json"
+  },
+  "test": {
+    "username": "admin",
+    "password": "admin123",
+    "database": "task_manager_test",
+    "host": "db",
+    "dialect": "postgres"
+  },
+  "production": {
+    "username": "admin",
+    "password": "admin123",
+    "database": "task_manager_prod",
+    "host": "db",
+    "dialect": "postgres"
+  }
+}
