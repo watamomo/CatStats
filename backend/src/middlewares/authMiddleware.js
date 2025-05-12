@@ -1,8 +1,8 @@
 const jwt = require("jsonwebtoken");
 
-const JWT_SECRET = "secreto_super_seguro"; // Debería estar en variables de entorno
+const JWT_SECRET = "secreto_super_seguro";
 
-module.exports = (req, res, next) => {
+const authenticateToken = (req, res, next) => {
   const token = req.header("Authorization");
 
   if (!token) {
@@ -17,3 +17,5 @@ module.exports = (req, res, next) => {
     res.status(401).json({ msg: "Token no válido" });
   }
 };
+
+module.exports = { authenticateToken };

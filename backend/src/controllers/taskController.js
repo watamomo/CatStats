@@ -1,4 +1,5 @@
-const { Task } = require("../models");
+const { Task, Group, User } = require("../models");
+
 
 // 📌 Obtener todas las tareas
 exports.getTasks = async (req, res) => {
@@ -8,6 +9,25 @@ exports.getTasks = async (req, res) => {
   } catch (error) {
     console.error(error);
     res.status(500).json({ msg: "Error al obtener las tareas" });
+  }
+};
+
+// 📌 Obtener tareas de un usuario
+exports.getTasksByUser = async (req, res) => {
+  const { userId } = req.params; // Asumimos que el `userId` se pasa como parámetro
+
+  try {
+    const tasks = await Task.findAll({
+      where: {
+        assigned_to: userId, // Filtra las tareas asignadas a este usuario
+        due_date: { [Op.ne]: null }, // Asegúrate de que la fecha de vencimiento no sea null
+      },
+      order: [['due_date', 'ASC']], // Ordena las tareas por fecha de vencimiento
+    });
+    res.json(tasks); // Envía las tareas al frontend
+  } catch (error) {
+    console.error("Error al obtener tareas del usuario:", error);
+    res.status(500).json({ msg: "Error al obtener las tareas del usuario" });
   }
 };
 
@@ -66,5 +86,26 @@ exports.deleteTask = async (req, res) => {
   } catch (error) {
     console.error(error);
     res.status(500).json({ msg: "Error al eliminar la tarea" });
+  }
+};
+
+// 📌 Obtener tareas por slug de grupo
+exports.getTasksByGroupSlug = async (req, res) => {
+  const { slug } = req.params;
+
+  try {
+    const group = await Group.findOne({
+      where: { slug },
+      include: [{ model: Task }],
+    });
+
+    if (!group) {
+      return res.status(404).json({ msg: "Grupo no encontrado" });
+    }
+
+    res.json(group.Tasks);
+  } catch (error) {
+    console.error("Error al obtener tareas por grupo:", error);
+    res.status(500).json({ msg: "Error al obtener las tareas del grupo" });
   }
 };

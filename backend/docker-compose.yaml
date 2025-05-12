@@ -1,22 +1,6 @@
 version: "3.9"
-services:
-  backend:
-    build: .
-    ports:
-      - "3000:3000"
-    volumes:
-      - .:/app
-      - /app/node_modules
-    command: npm run dev
-    depends_on:
-      - db
-    environment:
-      DATABASE_HOST: db
-      DATABASE_USER: admin
-      DATABASE_PASSWORD: admin123
-      DATABASE_NAME: task_manager
-      DATABASE_PORT: 5432
 
+services:
   db:
     image: postgres:15
     environment:
@@ -27,6 +11,22 @@ services:
       - "5432:5432"
     volumes:
       - db-data:/var/lib/postgresql/data
+
+  backend:
+    build: .
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/app
+    command: sh -c "echo 'Esperando a PostgreSQL...' && sleep 10 && npm run dev"
+    depends_on:
+      - db
+    environment:
+      DATABASE_HOST: db
+      DATABASE_USER: admin
+      DATABASE_PASSWORD: admin123
+      DATABASE_NAME: task_manager
+      DATABASE_PORT: 5432
 
 volumes:
   db-data:

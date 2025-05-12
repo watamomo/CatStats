@@ -1,63 +1,64 @@
-'use strict';
-const { Model, DataTypes } = require('sequelize');
-
-module.exports = (sequelize) => {
-  class Task extends Model {}
-
-  Task.init(
-    {
-      id: {
-        type: DataTypes.UUID,
-        defaultValue: DataTypes.UUIDV4,
-        primaryKey: true,
-        allowNull: false,
-      },
-      title: {
-        type: DataTypes.STRING,
-        allowNull: false,
-      },
-      description: {
-        type: DataTypes.TEXT,
-        allowNull: false,
-      },
-      status: {
-        type: DataTypes.STRING,
-        allowNull: false,
-        defaultValue: 'pending',
-      },
-      userId: {
-        type: DataTypes.UUID,
-        allowNull: true,
-        references: {
-          model: 'Users',
-          key: 'id',
-        },
-        onUpdate: 'CASCADE',
-        onDelete: 'SET NULL',
-      },
-      assignedUserId: {  // Columna de usuario asignado
-        type: DataTypes.UUID,
-        allowNull: true,
-        references: {
-          model: 'Users',
-          key: 'id',
-        },
-        onUpdate: 'CASCADE',
-        onDelete: 'SET NULL',
+module.exports = (sequelize, DataTypes) => {
+  const Task = sequelize.define("Task", {
+    id: {
+      type: DataTypes.UUID,
+      defaultValue: DataTypes.UUIDV4,
+      primaryKey: true,
+    },
+    title: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    description: {
+      type: DataTypes.TEXT,
+      allowNull: true,
+    },
+    content: {
+      type: DataTypes.TEXT,
+      allowNull: false,
+    },
+    due_date: {
+      type: DataTypes.DATE,
+      allowNull: true,
+    },
+    progress: {
+      type: DataTypes.INTEGER,
+      defaultValue: 0,
+      validate: {
+        min: 0,
+        max: 100,
       },
     },
-    {
-      sequelize,
-      modelName: 'Task',
-      tableName: 'Tasks',
-      timestamps: true,
-    }
-  );
+    status: {
+      type: DataTypes.ENUM("pendiente", "en progreso", "completado"),
+      defaultValue: "pendiente",
+    },
+  });
 
-  // Relación entre Task y User (asignado a un usuario)
-  Task.associate = function (models) {
-    Task.belongsTo(models.User, { foreignKey: 'assignedUserId', as: 'assignedUser' });
-    Task.belongsTo(models.User, { foreignKey: 'userId', as: 'creator' }); // Relación con el creador de la tarea
+  Task.associate = (models) => {
+    // 📌 Relación con usuario asignado
+    Task.belongsTo(models.User, {
+      foreignKey: "assigned_to",
+      as: "assignedUser",
+    });
+
+    // 📌 Relación con grupo
+    Task.belongsTo(models.Group, {
+      foreignKey: "group_id",
+      as: "group",
+    });
+
+    // 📌 Relación con comentarios
+    Task.hasMany(models.Comment, {
+      foreignKey: "task_id",
+      as: "comments",
+    });
+
+    // 📌 Relación con notas
+    Task.hasMany(models.Note, {
+      foreignKey: "task_id",
+      as: "notes",
+    });
   };
 
   return Task;

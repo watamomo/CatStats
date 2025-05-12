@@ -1,7 +1,7 @@
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
 const { validationResult } = require("express-validator");
-const { User } = require("../src/models");
+const { User } = require("../models");
 
 const JWT_SECRET = "secreto_super_seguro";
 
@@ -24,7 +24,15 @@ exports.register = async (req, res) => {
 
     const token = jwt.sign({ id: user.id }, JWT_SECRET, { expiresIn: "1h" });
 
-    res.json({ msg: "Usuario registrado exitosamente", token });
+    res.json({
+      token,
+      user: {
+        id: user.id,
+        name: user.name,
+        email: user.email
+      }
+    });
+    
   } catch (error) {
     console.error(error);
     res.status(500).json({ msg: "Error en el servidor" });
@@ -47,9 +55,38 @@ exports.login = async (req, res) => {
 
     const token = jwt.sign({ id: user.id }, JWT_SECRET, { expiresIn: "1h" });
 
-    res.json({ msg: "Inicio de sesión exitoso", token });
+    res.json({
+      token,
+      user: {
+        id: user.id,
+        name: user.name,
+        email: user.email
+      }
+    });
+    
   } catch (error) {
     console.error(error);
     res.status(500).json({ msg: "Error en el servidor" });
+  }
+};
+
+// Obtener tareas por slug de grupo
+exports.getTasksByGroupSlug = async (req, res) => {
+  const { slug } = req.params;
+
+  try {
+    const group = await Group.findOne({
+      where: { slug },
+      include: [{ model: Task }],
+    });
+
+    if (!group) {
+      return res.status(404).json({ msg: "Grupo no encontrado" });
+    }
+
+    res.json(group.Tasks);
+  } catch (error) {
+    console.error("Error al obtener tareas del grupo:", error);
+    res.status(500).json({ msg: "Error al obtener tareas del grupo" });
   }
 };
