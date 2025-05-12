@@ -1,0 +1,42 @@
+/* src/components/Sidebar.module.css */
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 250px;
+    height: 100%;
+    background-color: #1D1F25; /* Fondo oscuro */
+    padding: 20px;
+    box-shadow: 2px 0px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .sidebar .logo h2 {
+    color: #fff;
+    text-transform: uppercase;
+    font-size: 1.5rem;
+    margin-bottom: 30px;
+  }
+  
+  .sidebar .nav ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .sidebar .nav ul li {
+    margin-bottom: 20px;
+  }
+  
+  .sidebar .nav ul li a {
+    color: #bbb;
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: 500;
+    display: block;
+    transition: all 0.3s ease;
+  }
+  
+  .sidebar .nav ul li a:hover {
+    color: #FF9F00; /* Color de hover */
+  }
+  
