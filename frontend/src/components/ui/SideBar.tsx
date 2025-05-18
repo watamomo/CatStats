@@ -62,11 +62,12 @@ function Sidebar() {
     };
 
     return (
-        <aside className="w-64 min-h-screen bg-gradient-to-br from-[#0c0c0d] to-[#111112] text-white flex flex-col justify-between p-5 border-r border-white/10 shadow-xl">
+        <aside className="w-64 min-h-screen bg-gradient-to-br from-[#0c0c0d] to-[#111112] text-white flex flex-col justify-between p-5 border-r border-white/10 shadow-xl dark:bg-[#111112] dark:border-gray-700">
   <div>
     <h1 className="text-2xl font-bold mb-2 text-center text-blue-500 tracking-tight">
       CatStats
     </h1>
+
 
     {user && (
       <div className="text-sm text-center mb-6 text-gray-400">
