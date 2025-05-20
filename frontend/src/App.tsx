@@ -6,6 +6,7 @@ import Dashboard from "./features/Dashboard";
 import TeamTasks from "./features/TeamTasks";
 import AppLayout from "./AppLayout"; // Nuevo layout
 import { ContinuousCalendar } from "./features/Calendar";
+import ProfilePage from "./features/ProfilePage";
 
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/teams/:slug" element={<TeamTasks />} />
           <Route path="/calendar" element={<ContinuousCalendar />} />
+          <Route path="/profile" element={<ProfilePage />} />
         </Route>
       </Routes>
     </AnimatePresence>

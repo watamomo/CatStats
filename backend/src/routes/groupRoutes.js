@@ -97,19 +97,25 @@ router.get("/:groupId/members", authenticateToken, async (req, res) => {
     const { groupId } = req.params;
 
     const group = await Group.findByPk(groupId, {
-      include: [{ model: User, attributes: ["id", "name", "email"] }],
+      include: [{
+        model: User,
+        as: "members",
+        attributes: ["id", "name", "email"],
+        through: { attributes: [] },
+      }],
     });
 
     if (!group) {
       return res.status(404).json({ msg: "Grupo no encontrado" });
     }
 
-    res.json(group.Users);
+    res.json(group.members); 
   } catch (error) {
     console.error("❌ Error al obtener miembros del grupo:", error);
     res.status(500).json({ msg: "Error al obtener los miembros del grupo" });
   }
 });
+
 
 // 📌 Salir de un grupo
 router.delete("/:groupId/leave", authenticateToken, async (req, res) => {

@@ -125,9 +125,6 @@ function TeamTasks() {
           </div>
         </div>
 
-
-
-
         <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-6">
           <div className="flex items-center gap-2 bg-[#2b2b2b] px-3 py-2 rounded-md border border-white/10 w-full md:w-1/2">
             <Search size={16} className="text-gray-400" />
@@ -277,9 +274,9 @@ function TeamTasks() {
 
       {group?.id && (
         <InviteUserModal
-          open={openInviteModal} // El estado que maneja si el modal está abierto o no
-          onClose={() => setOpenInviteModal(false)} // Función para cerrar el modal
-          groupId={group.id} // El ID del grupo en el que se va a invitar al usuario
+          open={openInviteModal}
+          onClose={() => setOpenInviteModal(false)}
+          groupId={group.id}
         />
       )}
 

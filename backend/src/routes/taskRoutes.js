@@ -39,8 +39,8 @@ router.get("/weekly-summary", authenticateToken, async (req, res) => {
 router.get("/monthly-progress", authenticateToken, async (req, res) => {
   try {
     const now = new Date();
-    const startOfMonth = new Date(now.getFullYear(), now.getMonth(), 1, 0, 0, 0);
-    const endOfMonth = new Date(now.getFullYear(), now.getMonth() + 1, 0, 23, 59, 59, 999);
+    const startOfMonth = new Date(now.getFullYear(), now.getMonth(), 1);
+    const endOfMonth = new Date(now.getFullYear(), now.getMonth() + 1, 0, 23, 59, 59);
 
     const tasks = await Task.findAll({
       where: {
@@ -61,14 +61,18 @@ router.get("/monthly-progress", authenticateToken, async (req, res) => {
   }
 });
 
-
 // 📌 Obtener tareas de un grupo por slug
 router.get("/group/:slug", authenticateToken, taskController.getTasksByGroupSlug);
 
-// 📌 Obtener todas las tareas
+// 📌 Obtener todas las tareas del usuario autenticado
 router.get("/", authenticateToken, async (req, res) => {
   try {
-    const tasks = await Task.findAll();
+    const tasks = await Task.findAll({
+      where: {
+        assigned_to: req.user.id,
+      },
+      order: [["createdAt", "DESC"]],
+    });
     res.json(tasks);
   } catch (error) {
     console.error(error);
@@ -117,11 +121,20 @@ router.post("/", authenticateToken, async (req, res) => {
   }
 });
 
-// 📌 Editar una tarea existente
+// 📌 Editar una tarea existente (con soporte para assigned_to)
 router.put("/:id", authenticateToken, async (req, res) => {
   try {
-    const { title, description, content, due_date, progress, status } = req.body;
-    const task = await Task.findOne({ where: { id: req.params.id, assigned_to: req.user.id } });
+    const {
+      title,
+      description,
+      content,
+      due_date,
+      progress,
+      status,
+      assigned_to,
+    } = req.body;
+
+    const task = await Task.findByPk(req.params.id);
 
     if (!task) return res.status(404).json({ error: "Tarea no encontrada" });
 
@@ -131,6 +144,7 @@ router.put("/:id", authenticateToken, async (req, res) => {
     task.due_date = due_date || task.due_date;
     task.progress = progress !== undefined ? progress : task.progress;
     task.status = status || task.status;
+    task.assigned_to = assigned_to ?? task.assigned_to;
 
     await task.save();
 
@@ -150,7 +164,9 @@ router.put("/:id", authenticateToken, async (req, res) => {
 // 📌 Eliminar una tarea
 router.delete("/:id", authenticateToken, async (req, res) => {
   try {
-    const task = await Task.findOne({ where: { id: req.params.id, assigned_to: req.user.id } });
+    const task = await Task.findOne({
+      where: { id: req.params.id, assigned_to: req.user.id },
+    });
 
     if (!task) return res.status(404).json({ error: "Tarea no encontrada" });
 

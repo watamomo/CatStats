@@ -9,6 +9,9 @@ const taskRoutes = require("./routes/taskRoutes");
 const groupRoutes = require("./routes/groupRoutes");
 const notificationRoutes = require("./routes/notificationRoutes");
 const groupChatRoutes = require("./routes/messageRoutes");
+const commentRoutes = require("./routes/commentsRoutes");
+const userRoutes = require("./routes/userRoutes");
+const path = require("path");
 
 const app = express();
 const server = http.createServer(app);
@@ -31,6 +34,10 @@ app.use("/api/groups", groupRoutes);
 app.use("/api/auth", authRoutes);
 app.use("/api/tasks", taskRoutes);
 app.use("/api/notifications", notificationRoutes);
+app.use("/api", commentRoutes);
+app.use("/api/users", userRoutes);
+app.use("/uploads", express.static(path.join(__dirname, "..", "uploads")));
+
 
 app.get("/", (req, res) => {
   res.send("¡Bienvenido al backend del organizador de tareas!");

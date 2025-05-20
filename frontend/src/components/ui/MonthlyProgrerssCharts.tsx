@@ -69,7 +69,7 @@ const MonthlyProgressChart = () => {
   }
 
   return (
-    <div className="h-full flex flex-col items-center justify-center bg-gradient-to-br from-[#1e1e1e] to-[#121212] rounded-2xl shadow-xl border border-white/10 p-4">
+    <div className="h-full flex flex-col items-center justify-center p-4">
       <div className="flex items-center gap-2 mb-2">
       <CalendarCheck className="text-blue-400 w-6 h-6" />
         <p className="text-base text-white font-semibold">

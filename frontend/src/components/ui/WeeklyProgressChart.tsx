@@ -48,7 +48,7 @@ function WeeklyProgressChart() {
   }, [token]);
 
   return (
-    <div className="bg-gradient-to-br from-[#1e1e1e] to-[#151515] rounded-xl p-6 shadow-xl border border-white/10">
+    <div className="p-6">
       <div className="flex items-center gap-2 mb-4">
       <CalendarCheck2 className="text-blue-400 w-6 h-6" />
         <h3 className="text-xl font-bold text-white">Progreso semanal</h3>

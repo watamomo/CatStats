@@ -2,7 +2,7 @@
 const { Model, DataTypes } = require("sequelize");
 
 module.exports = (sequelize) => {
-  class User extends Model {}
+  class User extends Model { }
 
   User.init({
     id: {
@@ -23,11 +23,13 @@ module.exports = (sequelize) => {
     password: {
       type: DataTypes.STRING,
       allowNull: false,
-    },
+    }
+
   }, {
     sequelize,
     modelName: "User",
   });
+
 
   User.associate = (models) => {
     User.belongsToMany(models.Group, {

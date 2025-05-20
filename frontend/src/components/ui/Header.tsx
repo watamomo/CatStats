@@ -15,7 +15,7 @@ const Header = () => {
   const [hasUnread, setHasUnread] = useState(false);
 
   return (
-    <header className="flex justify-end items-center w-full px-4 py-3 bg-[#1b1b1b] rounded-xl shadow border border-white/10 relative">
+    <header className="flex justify-end items-center w-full px-4 py-3 bg-zinc-800/50 text-white border-white/10 rounded-xl shadow border border-white/10 relative">
       <CreateTaskModal
         open={open}
         onClose={() => setOpen(false)}

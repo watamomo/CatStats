@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useMemo, useRef } from 'react';
-import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import TaskModal from '../components/modals/TaskModal';
 
@@ -25,14 +24,13 @@ interface ContinuousCalendarProps {
   onClick?: (_day: number, _month: number, _year: number) => void;
 }
 
-export const ContinuousCalendar: React.FC<ContinuousCalendarProps> = ({ onClick }) => {
-  const { slug } = useParams();
+export const ContinuousCalendar: React.FC<ContinuousCalendarProps> = () => {
   const today = new Date();
   const dayRefs = useRef<(HTMLDivElement | null)[]>([]);
   const [year, setYear] = useState<number>(today.getFullYear());
   const [selectedMonth, setSelectedMonth] = useState<number>(today.getMonth());
   const [tasks, setTasks] = useState<Task[]>([]);
-  const [selectedDate, setSelectedDate] = useState<Date>(today);
+  const [_selectedDate, setSelectedDate] = useState<Date>(today);
   const [modalVisible, setModalVisible] = useState(false);
   const [selectedDayTasks, setSelectedDayTasks] = useState<Task[]>([]);
 
@@ -176,8 +174,7 @@ export const ContinuousCalendar: React.FC<ContinuousCalendarProps> = ({ onClick 
   };
 
   return (
-    <div className="no-scrollbar calendar-container max-h-full overflow-y-scroll bg-gradient-to-br from-[#1e1e1e] to-[#111] p-6 rounded-xl border border-white/10 shadow-xl">
-      {/* Calendar header and month/year selection */}
+    <div className="no-scrollbar calendar-container max-h-full overflow-y-hidden bg-gradient-to-br from-[#1e1e1e] to-[#111] p-6 rounded-xl border border-white/10 shadow-xl S">
       <div className="sticky -top-px z-50 w-full rounded-t-2xl px-5 pt-7 sm:px-8 sm:pt-8">
         <div className="mb-4 flex w-full flex-wrap items-center justify-between gap-6">
           <div className="flex flex-wrap gap-2 sm:gap-3">
