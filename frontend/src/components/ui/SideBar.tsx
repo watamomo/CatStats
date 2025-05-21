@@ -64,7 +64,7 @@ function Sidebar() {
 
   return (
     <aside
-      className={`min-h-screen bg-gradient-to-br from-[#0c0c0d] to-[#111112] text-white flex flex-col justify-between border-r border-white/10 shadow-xl transition-all duration-300 ${
+      className={`min-h-screen bg-gradient-to-br from-zinc-950 to-zinc-900 text-white flex flex-col justify-between border-r border-white/10 shadow-xl transition-all duration-300 ${
         collapsed ? "w-[72px]" : "w-64"
       }`}
     >

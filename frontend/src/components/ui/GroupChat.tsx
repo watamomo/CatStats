@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import axios from "axios";
 import { io, Socket } from "socket.io-client";
 import { useAuth } from "../../context/AuthContext";
-import { motion } from "framer-motion"; // Importar Framer Motion
+import { motion } from "framer-motion";
 import { MessageCircle } from "lucide-react";
 
 interface Message {
@@ -103,9 +103,8 @@ function GroupChat({ groupId }: { groupId: string }) {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
               >
-                <p className="text-xs text-gray-300 mb-2">
+                <p className="text-xs text-gray-300 mb-1">
                   <span className="font-semibold">{msg.sender.name}</span>
-                  <span className="mx-1">·</span>
                 </p>
                 <p className="whitespace-pre-wrap break-words">{msg.content}</p>
               </motion.div>

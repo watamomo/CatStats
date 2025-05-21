@@ -34,7 +34,7 @@ function Login() {
     return (
         <>
 
-            <div className="relative min-h-screen bg-[#0e0f11]">
+            <div className="relative min-h-screen">
                 <ParallaxBackground />
 
                 <motion.div

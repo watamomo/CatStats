@@ -2,7 +2,6 @@ import React, { useState, useEffect, useMemo, useRef } from 'react';
 import axios from 'axios';
 import TaskModal from '../components/modals/TaskModal';
 
-// Definición del tipo Task
 export interface Task {
   id: string;
   title: string;
@@ -14,7 +13,7 @@ export interface Task {
     name: string;
   } | null;
   due_date?: string;
-  status: 'pendiente' | 'en progreso' | 'completado'; // Restringido a esos tres valores
+  status: 'pendiente' | 'en progreso' | 'completado';
 }
 
 const daysOfWeek = ['Dom', 'Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb'];
@@ -36,7 +35,6 @@ export const ContinuousCalendar: React.FC<ContinuousCalendarProps> = () => {
 
   const monthOptions = monthNames.map((month, index) => ({ name: month, value: `${index}` }));
 
-  // Fetch tasks from the API for the user
   useEffect(() => {
     const fetchTasks = async () => {
       try {
@@ -53,7 +51,6 @@ export const ContinuousCalendar: React.FC<ContinuousCalendarProps> = () => {
     fetchTasks();
   }, []);
 
-  // Function to generate calendar days
   const generateCalendar = useMemo(() => {
     const daysInMonth = (): { month: number; day: number }[] => {
       const daysInMonth = [];
@@ -94,7 +91,6 @@ export const ContinuousCalendar: React.FC<ContinuousCalendarProps> = () => {
           const isNewMonth = index === 0 || calendarDays[index - 1].month !== month;
           const isToday = today.getMonth() === month && today.getDate() === day && today.getFullYear() === year;
 
-          // Filter tasks for the current day
           const tasksForDay = tasks.filter((task) => {
             const taskDate = task.due_date ? new Date(task.due_date) : null;
             if (!taskDate) return false;
@@ -122,7 +118,7 @@ export const ContinuousCalendar: React.FC<ContinuousCalendarProps> = () => {
               data-month={month}
               data-day={day}
               onClick={() => handleDayClick(day, month, year)}
-              className={`relative group aspect-square w-full grow cursor-pointer rounded-xl border border-blue-400/40 font-medium transition-all hover:z-20 hover:border-blue-200 sm:-m-px sm:size-20 sm:rounded-2xl sm:border-2 lg:size-36 lg:rounded-3xl 2xl:size-40`}
+              className={`relative group aspect-square w-full grow cursor-pointer rounded-xl border border-blue-400/40 font-medium transition-all hover:border-blue-200 sm:-m-px sm:size-20 sm:rounded-2xl sm:border-2 lg:size-36 lg:rounded-3xl 2xl:size-40`}
             >
               <span className={`absolute left-1 top-1 flex size-5 items-center justify-center rounded-full text-xs sm:size-6 sm:text-sm lg:left-2 lg:top-2 lg:size-8 lg:text-base ${isToday ? 'bg-blue-500 font-semibold text-white' : ''} ${month < 0 ? 'text-blue-500/20' : 'text-white/40'}`}>
                 {day}
@@ -133,7 +129,6 @@ export const ContinuousCalendar: React.FC<ContinuousCalendarProps> = () => {
                 </span>
               )}
 
-              {/* Show tasks for the day */}
               {tasksForDay.length > 0 && (
                 <div onClick={handleSeeMoreClick} className="absolute bottom-2 left-2 right-2 bg-blue-500/30 p-1 rounded-md text-xs text-white">
                   {tasksForDay.slice(0, 2).map((task) => (
@@ -174,10 +169,10 @@ export const ContinuousCalendar: React.FC<ContinuousCalendarProps> = () => {
   };
 
   return (
-    <div className="no-scrollbar calendar-container max-h-full overflow-y-hidden bg-gradient-to-br from-[#1e1e1e] to-[#111] p-6 rounded-xl border border-white/10 shadow-xl S">
-      <div className="sticky -top-px z-50 w-full rounded-t-2xl px-5 pt-7 sm:px-8 sm:pt-8">
+    <div className="no-scrollbar calendar-container max-h-full overflow-y-hidden  p-6 rounded-xl">
+      <div className="sticky -top-px z-50 w-full px-5 pt-7">
         <div className="mb-4 flex w-full flex-wrap items-center justify-between gap-6">
-          <div className="flex flex-wrap gap-2 sm:gap-3">
+          <div className="flex flex-wrap gap-3 ">
             <select value={`${selectedMonth}`} onChange={handleMonthChange} className="bg-gray-800 text-white p-2 rounded-md">
               {monthOptions.map((option) => (
                 <option key={option.value} value={option.value}>{option.name}</option>
@@ -203,13 +198,12 @@ export const ContinuousCalendar: React.FC<ContinuousCalendarProps> = () => {
         {generateCalendar}
       </div>
 
-      {/* Task Modal */}
-<TaskModal
-  isVisible={modalVisible}
-  onClose={() => setModalVisible(false)}
-  tasks={selectedDayTasks}
-  setTasks={setSelectedDayTasks}
-/>
+      <TaskModal
+        isVisible={modalVisible}
+        onClose={() => setModalVisible(false)}
+        tasks={selectedDayTasks}
+        setTasks={setSelectedDayTasks}
+      />
 
 
 

@@ -20,7 +20,7 @@ function Dashboard() {
   const [notificationsOpen, setNotificationsOpen] = useState(false);
   const { query } = useSearch();
   const [open, setOpen] = useState(false);
-  const [hasUnreadNotifications, setHasUnreadNotifications] = useState(false);
+  const [_hasUnreadNotifications, setHasUnreadNotifications] = useState(false);
   const [editTask, setEditTask] = useState<Task | null>(null);
 
   const openEditModal = (task: Task) => setEditTask(task);
@@ -99,6 +99,8 @@ function Dashboard() {
       exit={{ opacity: 0 }}
       transition={{ duration: 0.3 }}
     >
+
+      
       {/* Header */}
       <div className="col-span-full flex items-center justify-between mb-4">
         <Header />

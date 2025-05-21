@@ -15,7 +15,7 @@ const Header = () => {
   const [hasUnread, setHasUnread] = useState(false);
 
   return (
-    <header className="flex justify-end items-center w-full px-4 py-3 bg-zinc-800/50 text-white border-white/10 rounded-xl shadow border border-white/10 relative">
+    <header className="flex justify-end items-center w-full px-4 py-3 bg-zinc-900 text-white border-white/10 rounded-xl shadow border border-white/10 relative">
       <CreateTaskModal
         open={open}
         onClose={() => setOpen(false)}
@@ -35,7 +35,7 @@ const Header = () => {
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.95 }}
             transition={{ duration: 0.2 }}
-            className="absolute right-28 top-1/2 -translate-y-1/2 w-72 bg-[#2a2a2a] border border-white/10 px-3 py-2 rounded-lg flex items-center gap-2 shadow-lg"
+            className="absolute right-28 top-1/2 -translate-y-1/2 w-72 bg-zinc-900 border border-white/10 px-3 py-2 rounded-lg flex items-center gap-2 shadow-lg"
           >
             <Search size={18} className="text-gray-400" />
             <input

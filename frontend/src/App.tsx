@@ -4,9 +4,11 @@ import Login from "./features/Login";
 import Register from "./features/Register";
 import Dashboard from "./features/Dashboard";
 import TeamTasks from "./features/TeamTasks";
-import AppLayout from "./AppLayout"; // Nuevo layout
+import AppLayout from "./AppLayout";
 import { ContinuousCalendar } from "./features/Calendar";
 import ProfilePage from "./features/ProfilePage";
+import StatisticsPage from "./features/StatisticsPage";
+import ProtectedRoute from "./services/ProtectedRoute";
 
 
 function App() {
@@ -18,11 +20,18 @@ function App() {
         <Route path="/" element={<Login />} />
         <Route path="/register" element={<Register />} />
 
-        <Route element={<AppLayout />}>
+        <Route
+          element={
+            <ProtectedRoute>
+              <AppLayout />
+            </ProtectedRoute>
+          }
+        >
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/teams/:slug" element={<TeamTasks />} />
           <Route path="/calendar" element={<ContinuousCalendar />} />
           <Route path="/profile" element={<ProfilePage />} />
+          <Route path="/stats" element={<StatisticsPage />} />
         </Route>
       </Routes>
     </AnimatePresence>
