@@ -139,7 +139,6 @@ function Dashboard() {
         <MonthlyProgressChart />
       </div>
 
-      {/* Tareas activas */}
       <div className="lg:col-span-6">
         <h2 className="text-xl font-bold mb-4 mt-4 text-white">Tareas activas</h2>
 
