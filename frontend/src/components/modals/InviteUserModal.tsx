@@ -22,7 +22,7 @@ function InviteUserModal({
     setInviteMessage(""); // Reset message
 
     try {
-      const response = await axios.post(
+      await axios.post(
         `http://localhost:3000/api/groups/${groupId}/invite`,
         { email },
         { headers: { Authorization: `Bearer ${token}` } }
@@ -33,6 +33,7 @@ function InviteUserModal({
     } catch (err: any) {
       setInviteMessage(err.response?.data?.error || "Error al invitar usuario");
     }
+
   };
 
   return (

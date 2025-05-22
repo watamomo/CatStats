@@ -24,7 +24,7 @@
     "socket.io": "^4.8.1"
   },
   "devDependencies": {
-    "nodemon": "^3.1.9",
+    "nodemon": "^3.1.10",
     "sequelize-cli": "^6.6.2"
   },
   "keywords": [
