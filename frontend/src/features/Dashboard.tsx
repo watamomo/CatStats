@@ -100,13 +100,10 @@ function Dashboard() {
       transition={{ duration: 0.3 }}
     >
 
-      
-      {/* Header */}
       <div className="col-span-full flex items-center justify-between mb-4">
         <Header />
       </div>
 
-      {/* Resumen general */}
       <div className="lg:col-span-2 bg-zinc-900 border border-white/10 rounded-2xl shadow-2xl p-6">
         <div className="flex items-center gap-3 mb-6">
           <BookmarkCheck className="text-blue-400 w-6 h-6" />
@@ -131,7 +128,6 @@ function Dashboard() {
         </div>
       </div>
 
-      {/* Gráficos */}
       <div className="lg:col-span-2 bg-zinc-900 rounded-2xl border border-white/10 shadow-2xl p-4">
         <WeeklyProgressChart />
       </div>
@@ -198,7 +194,6 @@ function Dashboard() {
               </div>
             ))}
 
-            {/* Botón agregar tarea */}
             <div
               onClick={() => setOpen(true)}
               className="min-h-[150px] bg-zinc-800/20 border border-dashed border-white/20 rounded-2xl flex items-center justify-center cursor-pointer hover:bg-zinc-700/30 transition-all duration-200"
@@ -209,7 +204,6 @@ function Dashboard() {
         )}
       </div>
 
-      {/* Modales y notificaciones */}
       <NotificationDropdown
         open={notificationsOpen}
         onClose={() => setNotificationsOpen(false)}

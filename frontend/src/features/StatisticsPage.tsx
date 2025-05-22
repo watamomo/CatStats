@@ -88,7 +88,6 @@ export default function StatisticsPage() {
     ]
   };
 
-  // Configuración para animaciones
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -123,7 +122,6 @@ export default function StatisticsPage() {
         </div>
       </div>
 
-      {/* Panel resumen */}
       <motion.div 
         className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4"
         variants={containerVariants}
@@ -163,9 +161,7 @@ export default function StatisticsPage() {
         </motion.div>
       </motion.div>
 
-      {/* Gráficos principales */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        {/* Progreso semanal */}
         <motion.div 
           className="bg-zinc-800 p-4 rounded-lg shadow lg:col-span-2"
           initial={{ opacity: 0, y: 20 }}
@@ -199,7 +195,6 @@ export default function StatisticsPage() {
           </div>
         </motion.div>
 
-        {/* Por estado */}
         <motion.div 
           className="bg-zinc-800 p-4 rounded-lg shadow"
           initial={{ opacity: 0, y: 20 }}
@@ -226,7 +221,6 @@ export default function StatisticsPage() {
         </motion.div>
       </div>
 
-      {/* Tareas por día */}
       <motion.div 
         className="bg-zinc-800 p-4 rounded-lg shadow"
         initial={{ opacity: 0, y: 20 }}
@@ -260,9 +254,7 @@ export default function StatisticsPage() {
         </div>
       </motion.div>
 
-      {/* Datos adicionales */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        {/* Rankings */}
         <motion.div 
           className="bg-zinc-800 p-4 rounded-lg shadow"
           initial={{ opacity: 0, y: 20 }}
@@ -291,7 +283,6 @@ export default function StatisticsPage() {
           </ul>
         </motion.div>
 
-        {/* Participación */}
         <motion.div 
           className="bg-zinc-800 p-4 rounded-lg shadow"
           initial={{ opacity: 0, y: 20 }}
@@ -321,7 +312,6 @@ export default function StatisticsPage() {
         </motion.div>
       </div>
 
-      {/* Datos destacados */}
       <motion.div 
         className="grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-4"
         variants={containerVariants}
@@ -354,7 +344,6 @@ export default function StatisticsPage() {
         </motion.div>
       </motion.div>
 
-      {/* Comparación */}
       <motion.div 
         className="bg-zinc-800 p-4 rounded-lg shadow"
         initial={{ opacity: 0, y: 20 }}
