@@ -204,9 +204,6 @@ export const ContinuousCalendar: React.FC<ContinuousCalendarProps> = () => {
         tasks={selectedDayTasks}
         setTasks={setSelectedDayTasks}
       />
-
-
-
     </div>
   );
 };

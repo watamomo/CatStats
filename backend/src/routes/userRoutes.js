@@ -1,10 +1,8 @@
 const express = require("express");
 const { authenticateToken } = require("../middlewares/authMiddleware");
 const { User, Group } = require("../models");
-
 const router = express.Router();
 
-// 📌 Obtener perfil del usuario autenticado
 router.get("/me", authenticateToken, async (req, res) => {
   try {
     const user = await User.findByPk(req.user.id, {
@@ -28,7 +26,6 @@ router.get("/me", authenticateToken, async (req, res) => {
   }
 });
 
-// 📌 Actualizar solo el nombre del usuario
 router.put("/me", authenticateToken, async (req, res) => {
   try {
     const user = await User.findByPk(req.user.id);

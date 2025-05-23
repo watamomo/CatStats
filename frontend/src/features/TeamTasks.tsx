@@ -10,7 +10,6 @@ import GroupChat from "../components/ui/GroupChat";
 import InviteUserModal from "../components/modals/InviteUserModal";
 import { Task } from "../models/Task";
 
-
 interface Group {
   id: string;
   name: string;
@@ -180,7 +179,6 @@ function TeamTasks() {
                 </span>
               </div>
 
-              {/* Barra de progreso */}
               <div className="w-full bg-white/10 rounded-full h-2 mt-2">
                 <div
                   className={`h-full rounded-full ${task.progress === 100
@@ -206,7 +204,6 @@ function TeamTasks() {
 
           ))}
 
-          {/* Aquí es donde aparece el botón para agregar tarea */}
           <div
             onClick={() => setCreateOpen(true)}
             className="h-full min-h-[160px] hover:from-white/20 hover:to-white/10 border border-dashed border-white/20 rounded-lg flex items-center justify-center cursor-pointer transition-all duration-200 transform hover:bg-white/5"
@@ -279,7 +276,6 @@ function TeamTasks() {
           groupId={group.id}
         />
       )}
-
 
       {editTask && (
         <EditTaskModal

@@ -23,7 +23,6 @@ module.exports = (sequelize, DataTypes) => {
 
     Group.hasMany(models.Task, { foreignKey: "group_id", as: "tasks" });
 
-    // ✅ Asociación con mensajes
     Group.hasMany(models.Message, {
       foreignKey: "group_id",
       as: "messages",

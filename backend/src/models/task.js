@@ -36,25 +36,21 @@ module.exports = (sequelize, DataTypes) => {
   });
 
   Task.associate = (models) => {
-    // 📌 Relación con usuario asignado
     Task.belongsTo(models.User, {
       foreignKey: "assigned_to",
       as: "assignedUser",
     });
 
-    // 📌 Relación con grupo
     Task.belongsTo(models.Group, {
       foreignKey: "group_id",
       as: "group",
     });
 
-    // 📌 Relación con comentarios
     Task.hasMany(models.Comment, {
       foreignKey: "task_id",
       as: "comments",
     });
 
-    // 📌 Relación con notas
     Task.hasMany(models.Note, {
       foreignKey: "task_id",
       as: "notes",

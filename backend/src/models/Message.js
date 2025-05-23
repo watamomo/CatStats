@@ -13,10 +13,9 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
     }
   }, {
-    timestamps: true,  // Esto le dice a Sequelize que maneje automáticamente createdAt y updatedAt
+    timestamps: true,
   });
 
-  // Relacionar el mensaje con un usuario y un grupo
   Message.associate = (models) => {
     Message.belongsTo(models.User, {
       foreignKey: "sender_id",

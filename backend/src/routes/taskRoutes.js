@@ -2,11 +2,9 @@ const express = require("express");
 const { Task, Notification, User } = require("../models");
 const { authenticateToken } = require("../middlewares/authMiddleware");
 const taskController = require("../controllers/taskController");
-
 const router = express.Router();
 const { Op } = require("sequelize");
 
-// 📌 Obtener resumen semanal de tareas completadas
 router.get("/weekly-summary", authenticateToken, async (req, res) => {
   try {
     const oneWeekAgo = new Date();
@@ -35,7 +33,6 @@ router.get("/weekly-summary", authenticateToken, async (req, res) => {
   }
 });
 
-// 📌 Obtener resumen mensual completo: completadas y totales
 router.get("/monthly-progress", authenticateToken, async (req, res) => {
   try {
     const now = new Date();
@@ -61,10 +58,8 @@ router.get("/monthly-progress", authenticateToken, async (req, res) => {
   }
 });
 
-// 📌 Obtener tareas de un grupo por slug
 router.get("/group/:slug", authenticateToken, taskController.getTasksByGroupSlug);
 
-// 📌 Obtener todas las tareas del usuario autenticado
 router.get("/", authenticateToken, async (req, res) => {
   try {
     const tasks = await Task.findAll({
@@ -80,7 +75,6 @@ router.get("/", authenticateToken, async (req, res) => {
   }
 });
 
-// 📌 Crear una nueva tarea
 router.post("/", authenticateToken, async (req, res) => {
   try {
     const {
@@ -121,7 +115,6 @@ router.post("/", authenticateToken, async (req, res) => {
   }
 });
 
-// 📌 Editar una tarea existente (con soporte para assigned_to)
 router.put("/:id", authenticateToken, async (req, res) => {
   try {
     const {
@@ -161,7 +154,6 @@ router.put("/:id", authenticateToken, async (req, res) => {
   }
 });
 
-// 📌 Eliminar una tarea
 router.delete("/:id", authenticateToken, async (req, res) => {
   try {
     const task = await Task.findOne({

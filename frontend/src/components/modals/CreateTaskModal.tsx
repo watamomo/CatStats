@@ -88,7 +88,6 @@ function CreateTaskModal({
     if (token) fetchGroups();
   }, [token]);
 
-  // Ajustar progreso automáticamente al cambiar el estado
   useEffect(() => {
     if (status === "pendiente") setProgress(0);
     if (status === "completado") setProgress(100);
@@ -125,7 +124,6 @@ function CreateTaskModal({
 
       if (onTaskCreated) onTaskCreated(res.data.task);
 
-      // Reset form
       setTitle("");
       setDescription("");
       setContent("");
@@ -173,7 +171,6 @@ function CreateTaskModal({
             transition={{ duration: 0.2, ease: "easeOut" }}
             className="backdrop-blur-lg text-white border-white/10 w-full max-w-6xl max-h-[95vh] rounded-2xl shadow-2xl border overflow-hidden flex flex-col"
           >
-            {/* Header */}
             <div className="flex items-center justify-between p-6 border-b border-zinc-700/50 bg-zinc-800/50">
               <div className="flex items-center gap-4">
                 <div className="p-2 bg-blue-500/20 rounded-lg">
@@ -192,13 +189,10 @@ function CreateTaskModal({
               </button>
             </div>
 
-            {/* Content Dashboard */}
             <div className="flex-1 overflow-hidden">
               <form onSubmit={handleSubmit} className="h-full">
                 <div className="grid grid-cols-3 gap-6 p-6 h-full">
-                  {/* Columna 1: Información Principal */}
                   <div className="space-y-6">
-                    {/* Card de información básica */}
                     <div className="bg-zinc-800 rounded-xl border border-white/10 p-6">
                       <div className="flex items-center gap-3 mb-4">
                         <Icons.FileText className="text-blue-400" size={20} />
@@ -262,8 +256,6 @@ function CreateTaskModal({
                         </div>
                       </div>
                     </div>
-
-                    {/* Quick stats preview */}
                     <div className="grid grid-cols-2 gap-4">
                       <div className="bg-zinc-800 rounded-xl border border-white/10 p-4">
                         <div className="flex items-center gap-2 mb-2">
@@ -284,9 +276,7 @@ function CreateTaskModal({
                     </div>
                   </div>
 
-                  {/* Columna 2: Estado y Configuración */}
                   <div className="space-y-6">
-                    {/* Card de estado */}
                     <div className="bg-zinc-800 rounded-xl border border-white/10 p-6">
                       <div className="flex items-center gap-3 mb-4">
                         <Icons.Settings className="text-green-400" size={20} />
@@ -294,7 +284,6 @@ function CreateTaskModal({
                       </div>
 
                       <div className="space-y-6">
-                        {/* Estado actual visual */}
                         <div className="flex items-center justify-between">
                           <span className="text-gray-300 font-medium">Estado actual:</span>
                           <span className={`px-3 py-1 rounded-full text-sm font-medium ${getStatusColor(status)}`}>
@@ -302,7 +291,6 @@ function CreateTaskModal({
                           </span>
                         </div>
 
-                        {/* Barra de progreso visual */}
                         <div>
                           <div className="flex justify-between items-center mb-2">
                             <span className="text-gray-300 font-medium">Progreso</span>
@@ -316,7 +304,6 @@ function CreateTaskModal({
                           </div>
                         </div>
 
-                        {/* Controles */}
                         <div className="grid grid-cols-1 gap-4">
                           <div>
                             <label className="block text-sm font-medium text-gray-300 mb-2">
@@ -391,7 +378,6 @@ function CreateTaskModal({
                       </div>
                     </div>
 
-                    {/* Card de fecha límite visual */}
                     {dueDate && (
                       <div className="bg-zinc-800 rounded-xl border border-white/10 p-6">
                         <div className="flex items-center gap-3 mb-3">
@@ -420,9 +406,7 @@ function CreateTaskModal({
                     )}
                   </div>
 
-                  {/* Columna 3: Asignación y Vista Previa */}
                   <div className="space-y-6">
-                    {/* Card de asignación */}
                     <div className="bg-zinc-800 rounded-xl border border-white/10 p-6">
                       <div className="flex items-center gap-3 mb-4">
                         <Icons.Users className="text-purple-400" size={20} />
@@ -462,7 +446,6 @@ function CreateTaskModal({
                       </div>
                     </div>
 
-                    {/* Preview de etiquetas */}
                     {tags && (
                       <div className="bg-zinc-800 rounded-xl border border-white/10 p-6">
                         <div className="flex items-center gap-3 mb-4">
@@ -485,7 +468,6 @@ function CreateTaskModal({
                       </div>
                     )}
 
-                    {/* Tips section */}
                     <div className="bg-zinc-800 rounded-xl border border-white/10 p-6">
                       <div className="flex items-center gap-3 mb-4">
                         <Icons.Lightbulb className="text-yellow-400" size={20} />
@@ -509,7 +491,6 @@ function CreateTaskModal({
                   </div>
                 </div>
 
-                {/* Footer con acciones */}
                 <div className="border-t border-zinc-700/50 bg-zinc-800/50 p-6">
                   {error && (
                     <div className="mb-4 bg-red-500/10 border border-red-500/20 rounded-lg p-3">

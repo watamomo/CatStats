@@ -13,8 +13,6 @@ function UserProfile() {
   useEffect(() => {
     if (!token) return;
 
-    console.log("TOKEN ACTUAL:", token);
-
     axios
       .get("http://localhost:3000/api/users/me", {
         headers: { Authorization: `Bearer ${token}` },

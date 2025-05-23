@@ -1,26 +1,7 @@
 const express = require("express");
 const { authenticateToken } = require("../middlewares/authMiddleware");
 const { User, Group } = require("../models");
-const multer = require("multer");
-const path = require("path");
-const fs = require("fs");
-
 const router = express.Router();
-
-// Configuración de multer
-const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    const dir = path.join(__dirname, "..", "uploads", "avatars");
-    fs.mkdirSync(dir, { recursive: true });
-    cb(null, dir);
-  },
-  filename: (req, file, cb) => {
-    const ext = path.extname(file.originalname);
-    const uniqueName = `${Date.now()}-${Math.round(Math.random() * 1e9)}${ext}`;
-    cb(null, uniqueName);
-  },
-});
-const upload = multer({ storage });
 
 // 📌 Obtener perfil del usuario
 router.get("/me", authenticateToken, async (req, res) => {

@@ -33,10 +33,8 @@ function Login() {
 
     return (
         <>
-
             <div className="relative min-h-screen">
                 <ParallaxBackground />
-
                 <motion.div
                     key="login"
                     initial={{ opacity: 0 }}
@@ -47,7 +45,6 @@ function Login() {
                 >
 
                     <div className="flex flex-col md:flex-row gap-12 px-6 py-10 max-w-6xl w-full items-center justify-center">
-                        {/* Info izquierda */}
                         <div className="flex-1 max-w-lg space-y-6">
                             <h1 className="text-4xl font-bold leading-tight text-white">
                                 Organiza tus tareas como un pro
@@ -60,7 +57,6 @@ function Login() {
                             </p>
                         </div>
 
-                        {/* Login derecha */}
                         <div className="flex-1 max-w-md w-full bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl shadow-xl p-10">
                             <h2 className="text-2xl font-bold text-center mb-2">Iniciar sesión</h2>
                             <p className="text-center text-sm text-gray-400 mb-6">

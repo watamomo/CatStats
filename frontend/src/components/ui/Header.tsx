@@ -27,7 +27,6 @@ const Header = () => {
         }}
       />
 
-      {/* Search bar */}
       <AnimatePresence>
         {searchOpen && (
           <motion.div
@@ -59,9 +58,7 @@ const Header = () => {
         )}
       </AnimatePresence>
 
-      {/* Actions */}
       <div className="flex items-center gap-3">
-        {/* Botón crear tarea */}
         <button
           onClick={() => setOpen(true)}
           className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 transition-colors text-white px-4 py-2 rounded-lg font-medium text-sm shadow-sm"
@@ -70,7 +67,6 @@ const Header = () => {
           Crear
         </button>
 
-        {/* Botón abrir búsqueda */}
         <button
           onClick={() => setSearchOpen(true)}
           className="p-2 rounded-md hover:bg-white/10 text-gray-300 hover:text-white transition"
@@ -79,7 +75,6 @@ const Header = () => {
           <Search size={20} />
         </button>
 
-        {/* Botón notificaciones */}
         <div className="relative">
           <button
             className="p-2 rounded-md hover:bg-white/10 text-gray-300 hover:text-white transition"
@@ -99,7 +94,6 @@ const Header = () => {
           />
         </div>
 
-        {/* Botón perfil */}
         <button
           onClick={() => navigate("/profile")}
           className="p-2 rounded-md hover:bg-white/10 text-gray-300 hover:text-white transition"

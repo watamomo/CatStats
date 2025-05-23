@@ -16,9 +16,6 @@ function WeeklyProgressChart() {
   const { token } = useAuth();
   const [data, setData] = useState<{ day: string; completed: number }[]>([]);
 
-
-  
-
   useEffect(() => {
     const fetchSummary = async () => {
       try {

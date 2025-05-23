@@ -32,7 +32,7 @@ module.exports = {
         onUpdate: 'CASCADE',
         onDelete: 'SET NULL'
       },
-      assignedUserId: {  // Nueva columna para asignar tareas
+      assignedUserId: {
         type: Sequelize.UUID,
         allowNull: true,
         references: {

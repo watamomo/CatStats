@@ -48,7 +48,7 @@ const MonthlyProgressChart = () => {
     {
       name: "Completado",
       value: percentage,
-      fill: "#22c55e", // Tailwind green-500
+      fill: "#22c55e",
     },
   ];
 

@@ -197,7 +197,6 @@ function EditTaskModal({
           transition={{ duration: 0.2, ease: "easeOut" }}
           className="backdrop-blur-lg text-white border-white/10 w-full max-w-6xl max-h-[95vh] rounded-2xl shadow-2xl border overflow-hidden flex flex-col"
         >
-          {/* Header */}
           <div className="flex items-center justify-between p-6 border-b border-zinc-700/50 bg-zinc-800/50">
             <div className="flex items-center gap-4">
               <div className="p-2 bg-blue-500/20 rounded-lg">
@@ -216,13 +215,10 @@ function EditTaskModal({
             </button>
           </div>
 
-          {/* Content Dashboard */}
           <div className="flex-1 overflow-hidden">
             <form onSubmit={handleSubmit} className="h-full">
               <div className="grid grid-cols-3 gap-6 p-6 h-full">
-                {/* Columna 1: Información Principal */}
                 <div className="space-y-6">
-                  {/* Card de información básica */}
                   <div className="bg-zinc-800 rounded-xl border border-white/10 p-6">
                     <div className="flex items-center gap-3 mb-4">
                       <Icons.FileText className="text-blue-400" size={20} />
@@ -288,12 +284,9 @@ function EditTaskModal({
                           ))}
                         </select>
                       </div>
-
-
                     </div>
                   </div>
 
-                  {/* Stats rápidas */}
                   <div className="grid grid-cols-2 gap-4">
                     <div className="bg-zinc-800 rounded-xl border border-white/10 p-4">
                       <div className="flex items-center gap-2 mb-2">
@@ -314,15 +307,11 @@ function EditTaskModal({
                           ? task.assignedUser.name || task.assignedUser.email
                           : "No asignada"}
                       </p>
-
-
                     </div>
                   </div>
                 </div>
 
-                {/* Columna 2: Estado y Progreso */}
                 <div className="space-y-6">
-                  {/* Card de estado */}
                   <div className="bg-zinc-800 rounded-xl border border-white/10 p-6">
                     <div className="flex items-center gap-3 mb-4">
                       <Icons.Activity className="text-green-400" size={20} />
@@ -330,7 +319,6 @@ function EditTaskModal({
                     </div>
 
                     <div className="space-y-6">
-                      {/* Estado actual */}
                       <div className="flex items-center justify-between">
                         <span className="text-gray-300 font-medium">Estado actual:</span>
                         <span className={`px-3 py-1 rounded-full text-sm font-medium ${getStatusColor(status)}`}>
@@ -338,7 +326,6 @@ function EditTaskModal({
                         </span>
                       </div>
 
-                      {/* Barra de progreso visual */}
                       <div>
                         <div className="flex justify-between items-center mb-2">
                           <span className="text-gray-300 font-medium">Progreso</span>
@@ -352,7 +339,6 @@ function EditTaskModal({
                         </div>
                       </div>
 
-                      {/* Controles */}
                       <div className="grid grid-cols-1 gap-4">
                         <div>
                           <label className="block text-sm font-medium text-gray-300 mb-2">
@@ -409,7 +395,6 @@ function EditTaskModal({
                     </div>
                   </div>
 
-                  {/* Card de fecha límite visual */}
                   {dueDate && (
                     <div className="bg-zinc-800 rounded-xl border border-white/10 p-6">
                       <div className="flex items-center gap-3 mb-3">
@@ -441,9 +426,7 @@ function EditTaskModal({
                   )}
                 </div>
 
-                {/* Columna 3: Comentarios y Acciones */}
                 <div className="space-y-6">
-                  {/* Card de comentarios */}
                   <div className="bg-zinc-800 rounded-xl border border-white/10 p-6 flex flex-col h-full">
                     <div className="flex items-center gap-3 mb-4">
                       <Icons.MessageCircle className="text-purple-400" size={20} />
@@ -452,7 +435,6 @@ function EditTaskModal({
                       </h3>
                     </div>
 
-                    {/* Lista de comentarios */}
                     <div className="flex-1 overflow-y-auto space-y-3 mb-4 max-h-64">
                       {comments.length === 0 ? (
                         <div className="text-center py-8">
@@ -486,7 +468,6 @@ function EditTaskModal({
                       )}
                     </div>
 
-                    {/* Nuevo comentario */}
                     <div className="space-y-3 border-t border-zinc-700 pt-4">
                       <textarea
                         value={newComment}
@@ -514,7 +495,6 @@ function EditTaskModal({
                 </div>
               </div>
 
-              {/* Footer con acciones */}
               <div className="border-t border-zinc-700/50 bg-zinc-800/50 p-6">
                 {error && (
                   <div className="mb-4 bg-red-500/10 border border-red-500/20 rounded-lg p-3">

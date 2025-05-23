@@ -3,7 +3,7 @@ const bcrypt = require("bcryptjs");
 const { validationResult } = require("express-validator");
 const { User } = require("../models");
 
-const JWT_SECRET = "secreto_super_seguro";
+const JWT_SECRET = "gatoporrosupersecreto";
 
 exports.register = async (req, res) => {
   const errors = validationResult(req);
@@ -70,7 +70,6 @@ exports.login = async (req, res) => {
   }
 };
 
-// Obtener tareas por slug de grupo
 exports.getTasksByGroupSlug = async (req, res) => {
   const { slug } = req.params;
 

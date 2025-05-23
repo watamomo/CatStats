@@ -1,5 +1,6 @@
 const { Group, User } = require("../models");
 
+// 📌 
 exports.getGroupsByUserId = async (req, res) => {
   const { userId } = req.params;
 

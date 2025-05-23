@@ -45,3 +45,20 @@ CatStats es una aplicación web moderna para la organización personal y colabor
 
 ```bash
 git clone https://github.com/tuusuario/taskflow.git
+  ```
+
+### Iniciar el backend
+
+```bash
+cd taskflow/backend
+npm install
+docker compose up -d
+```
+
+### Iniciar el frontend
+
+```bash
+cd taskflow/frontend
+npm install
+npm run dev
+```

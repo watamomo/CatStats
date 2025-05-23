@@ -1,6 +1,5 @@
 const { Task, Group, User } = require("../models");
 
-
 // 📌 Obtener todas las tareas
 exports.getTasks = async (req, res) => {
   try {
@@ -14,17 +13,17 @@ exports.getTasks = async (req, res) => {
 
 // 📌 Obtener tareas de un usuario
 exports.getTasksByUser = async (req, res) => {
-  const { userId } = req.params; // Asumimos que el `userId` se pasa como parámetro
+  const { userId } = req.params;
 
   try {
     const tasks = await Task.findAll({
       where: {
-        assigned_to: userId, // Filtra las tareas asignadas a este usuario
-        due_date: { [Op.ne]: null }, // Asegúrate de que la fecha de vencimiento no sea null
+        assigned_to: userId,
+        due_date: { [Op.ne]: null },
       },
-      order: [['due_date', 'ASC']], // Ordena las tareas por fecha de vencimiento
+      order: [['due_date', 'ASC']],
     });
-    res.json(tasks); // Envía las tareas al frontend
+    res.json(tasks);
   } catch (error) {
     console.error("Error al obtener tareas del usuario:", error);
     res.status(500).json({ msg: "Error al obtener las tareas del usuario" });
@@ -92,8 +91,6 @@ exports.updateTask = async (req, res) => {
     res.status(500).json({ msg: "Error al actualizar la tarea" });
   }
 };
-
-
 
 // 📌 Eliminar tarea
 exports.deleteTask = async (req, res) => {

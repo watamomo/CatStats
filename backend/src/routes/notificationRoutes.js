@@ -4,7 +4,6 @@ const { authenticateToken } = require("../middlewares/authMiddleware");
 
 const router = express.Router();
 
-// 📌 Obtener notificaciones del usuario
 router.get("/", authenticateToken, async (req, res) => {
   try {
     const notifications = await Notification.findAll({
@@ -18,7 +17,6 @@ router.get("/", authenticateToken, async (req, res) => {
   }
 });
 
-// 📌 Marcar todas como leídas
 router.put("/mark-read", authenticateToken, async (req, res) => {
   try {
     await Notification.update(

@@ -1,7 +1,7 @@
 {
-  "name": "organizador-tareas-backend",
+  "name": "catstats",
   "version": "1.0.0",
-  "description": "Backend para el organizador de tareas con Express y Docker",
+  "description": "Backend para catstats",
   "main": "src/index.js",
   "scripts": {
     "start": "node src/index.js",
@@ -26,12 +26,5 @@
   "devDependencies": {
     "nodemon": "^3.1.10",
     "sequelize-cli": "^6.6.2"
-  },
-  "keywords": [
-    "organizador",
-    "tareas",
-    "backend",
-    "express",
-    "docker"
-  ]
+  }
 }

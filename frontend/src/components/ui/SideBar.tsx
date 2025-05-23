@@ -69,7 +69,6 @@ function Sidebar() {
       }`}
     >
       <div className="p-4 flex flex-col gap-4">
-        {/* Header */}
         <div className="flex items-center justify-between">
           {!collapsed && (
             <h1 className="text-2xl font-bold text-blue-500 tracking-tight">
@@ -84,7 +83,6 @@ function Sidebar() {
           </button>
         </div>
 
-        {/* Usuario */}
         {user && (
           <div
             className={`flex items-center gap-3 transition-all ${
@@ -103,14 +101,12 @@ function Sidebar() {
           </div>
         )}
 
-        {/* Enlaces principales */}
         <nav className="space-y-1">
           <SidebarLink to="/dashboard" icon={Home} label="Dashboard" collapsed={collapsed} />
           <SidebarLink to="/calendar" icon={Calendar} label="Calendario" collapsed={collapsed} />
           <SidebarLink to="/stats" icon={BarChart3} label="Estadísticas" collapsed={collapsed} />
         </nav>
 
-        {/* Equipos */}
         <div className="mt-6">
           {!collapsed && (
             <h2 className="text-xs font-semibold text-gray-500 mb-2 px-1 uppercase tracking-wide">
@@ -166,7 +162,6 @@ function Sidebar() {
         </div>
       </div>
 
-      {/* Configuración y logout */}
       <div className="p-4 space-y-1">
         <SidebarLink to="/settings" icon={Settings} label="Configuración" collapsed={collapsed} />
         <button
@@ -180,7 +175,6 @@ function Sidebar() {
         </button>
       </div>
 
-      {/* Modal */}
       <AnimatePresence>
         {showCreateModal && (
           <CreateTeamModal

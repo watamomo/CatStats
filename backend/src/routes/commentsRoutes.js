@@ -3,7 +3,6 @@ const router = express.Router();
 const { Comment, User, Task } = require("../models");
 const { authenticateToken } = require("../middlewares/authMiddleware");
 
-// Obtener comentarios de una tarea
 router.get("/tasks/:taskId/comments", authenticateToken, async (req, res) => {
   try {
     const taskId = req.params.taskId;
@@ -33,7 +32,6 @@ router.get("/tasks/:taskId/comments", authenticateToken, async (req, res) => {
   }
 });
 
-// Crear nuevo comentario en una tarea
 router.post("/tasks/:taskId/comments", authenticateToken, async (req, res) => {
   try {
     const taskId = req.params.taskId;

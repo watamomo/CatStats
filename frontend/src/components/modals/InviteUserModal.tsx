@@ -19,7 +19,7 @@ function InviteUserModal({
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setInviteMessage(""); // Reset message
+    setInviteMessage("");
 
     try {
       await axios.post(
@@ -29,7 +29,7 @@ function InviteUserModal({
       );
 
       setInviteMessage("Usuario invitado correctamente.");
-      setEmail(""); // Reset input field after successful invite
+      setEmail("");
     } catch (err: any) {
       setInviteMessage(err.response?.data?.error || "Error al invitar usuario");
     }
