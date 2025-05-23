@@ -1,11 +1,10 @@
 # 🗂️ CatStats — Plataforma de Organización de Tareas y Equipos
 
-CatStats es una aplicación web moderna para la organización personal y colaborativa de tareas. Diseñada para fomentar la productividad individual y en equipo, cuenta con una interfaz intuitiva, soporte para grupos, tareas compartidas, estadísticas, chat grupal y un completo sistema de notas tipo Notion con bloques de texto, código e imagen.
+CatStats es una aplicación web moderna para la organización personal y colaborativa de tareas. Diseñada para fomentar la productividad individual y en equipo, cuenta con una interfaz intuitiva, soporte para grupos, tareas compartidas, estadísticas, chat grupal y un sistema de comentarios
 
 ## 🚀 Características Principales
 
 - ✅ Gestión de tareas con título, descripción, fecha límite, barra de progreso y comentarios
-- 🧠 Notas estilo Notion: bloques de texto, código e imágenes dentro de cada tarea
 - 👥 Equipos: crea grupos, invita miembros, organiza el trabajo colaborativo
 - 💬 Chat grupal por cada equipo para facilitar la comunicación
 - 📊 Dashboard con estadísticas de productividad y tareas activas
