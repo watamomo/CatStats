@@ -43,7 +43,7 @@ CatStats es una aplicación web moderna para la organización personal y colabor
 ### Clonar el repositorio
 
 ```bash
-git clone https://github.com/tuusuario/taskflow.git
+git clone https://github.com/watamomo/CatStats.git
   ```
 
 ### Iniciar el backend
@@ -61,6 +61,3 @@ cd taskflow/frontend
 npm install
 npm run dev
 ```
-=======
-git clone https://github.com/watamomo/CatStats.git
->>>>>>> c5e0351de4773eeac482b35002b6ae5faad81038
