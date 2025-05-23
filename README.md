@@ -43,7 +43,6 @@ CatStats es una aplicación web moderna para la organización personal y colabor
 ### Clonar el repositorio
 
 ```bash
-<<<<<<< HEAD
 git clone https://github.com/tuusuario/taskflow.git
   ```
 
